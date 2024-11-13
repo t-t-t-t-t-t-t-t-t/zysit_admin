@@ -1,19 +1,19 @@
-import Index from "@/views/Index/Index.vue"
-import Center from "@/views/Center/Center.vue"
-import AboutAdd from "@/views/About-manage/AboutAdd.vue"
-import AboutList from "@/views/About-manage/AboutList.vue"
-import CasesAdd from "@/views/Cases-manage/CasesAdd.vue"
-import CasesList from "@/views/Cases-manage/CasesList.vue"
-import HomeAdd from "@/views/Home-manage/HomeAdd.vue"
-import HomeList from "@/views/Home-manage/HomeList.vue"
-import NewsAdd from "@/views/News-manage/NewsAdd.vue"
-import NewsList from "@/views/News-manage/NewsList.vue"
-import ProductionAdd from "@/views/Production-manage/ProductionAdd.vue"
-import ProductionList from "@/views/Production-manage/ProductionList.vue"
-import SolutionAdd from "@/views/Solution-manage/SolutionAdd.vue"
-import SolutionList from "@/views/Solution-manage/SolutionList.vue"
-import UserAdd from "@/views/User-manage/UserAdd.vue"
-import UserList from "@/views/User-manage/UserList.vue"
+const Index = () => import("@/views/Index/Index.vue")
+const HonerList = () => import("@/views/About-manage/HonerList.vue")
+const FriendList = () => import("@/views/About-manage/FriendList.vue")
+const CasesCategoryList = () => import("@/views/Cases-manage/CasesCategoryList.vue")
+const CasesList = () => import("@/views/Cases-manage/CasesList.vue")
+const CasesAdd = () => import("@/views/Cases-manage/CasesAdd.vue")
+const CasesEdit = () => import("@/views/Cases-manage/CasesEdit.vue")
+const BannerList = () => import("@/views/Banner-manage/BannerList.vue")
+const NewsList = () => import("@/views/News-manage/NewsList.vue")
+const ProductionList = () => import("@/views/Production-manage/ProductionList.vue")
+const ProductCategoryList = () => import("@/views/Production-manage/ProductCategory.vue")
+
+const SolutionCategoryList = () => import("@/views/Solution-manage/SolutionCategory.vue")
+const SolutionList = () => import("@/views/Solution-manage/SolutionList.vue")
+const UserAdd = () => import("@/views/User-manage/UserAdd.vue")
+const UserList = () => import("@/views/User-manage/UserList.vue")
 const routes = [
     {
         path: '/',
@@ -30,74 +30,62 @@ const routes = [
         },
     },
     {
-        path: '/center',
-        component: Center,
-        meta: {
-            title: "个人中心"
-        },
-    },
-    {
         path: "/user-manage/userAdd",
         component: UserAdd,
         meta: {
             title: '编辑用户'
-        }
+        },
+        requireAdmin: true,
     },
     {
         path: "/user-manage/userList",
         component: UserList,
         meta: {
-            title: '用户'
+            title: '用户列表'
+        },
+        requireAdmin: true,
+    },
+    {
+        path: "/banner-manage/bannerList",
+        component: BannerList,
+        meta: {
+            title: 'Banner列表'
         }
     },
     {
-        path: "/home-manage/homeAdd",
-        component: HomeAdd,
+        path: "/about-manage/friendList",
+        component: FriendList,
         meta: {
-            title: '编辑首页'
+            title: '合作伙伴'
         }
     },
     {
-        path: "/home-manage/homeList",
-        component: HomeList,
+        path: "/about-manage/honerList",
+        component: HonerList,
         meta: {
-            title: '首页'
-        }
-    },
-    {
-        path: "/about-manage/aboutAdd",
-        component: AboutAdd,
-        meta: {
-            title: '编辑关于'
-        }
-    },
-    {
-        path: "/about-manage/aboutList",
-        component: AboutList,
-        meta: {
-            title: '关于'
-        }
-    },
-    {
-        path: "/production-manage/productionAdd",
-        component: ProductionAdd,
-        meta: {
-            title: '编辑产品'
+            title: '荣誉资质'
         }
     },
     {
         path: "/production-manage/productionList",
         component: ProductionList,
         meta: {
-            title: '产品'
+            title: '产品列表'
+        }
+    },
+    {
+        path: "/production-manage/productCategoryList",
+        component: ProductCategoryList,
+        meta: {
+            title: '产品类别列表'
         }
     },
 
     {
-        path: "/solution-manage/solutionAdd",
-        component: SolutionAdd,
+        path: "/solution-manage/solutionCategory",
+        component: SolutionCategoryList,
         meta: {
-            title: '编辑解决方案'
+            title: '解决方案类别'
         }
     },
     {
@@ -108,10 +96,10 @@ const routes = [
         }
     },
     {
-        path: "/cases-manage/casesAdd",
-        component: CasesAdd,
+        path: "/cases-manage/casesCategoryList",
+        component: CasesCategoryList,
         meta: {
-            title: '编辑应用案例'
+            title: '应用案例类别'
         }
     },
     {
@@ -121,12 +109,18 @@ const routes = [
             title: '应用案例'
         }
     },
-
     {
-        path: "/news-manage/newsAdd",
-        component: NewsAdd,
+        path: "/cases-manage/casesAdd",
+        component: CasesAdd,
         meta: {
-            title: '编辑新闻'
+            title: '添加应用案例'
+        }
+    },
+    {
+        path: "/cases-manage/casesEdit",
+        component: CasesEdit,
+        meta: {
+            title: '编辑应用案例'
         }
     },
     {

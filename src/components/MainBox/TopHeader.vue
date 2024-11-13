@@ -8,7 +8,7 @@
             <span>智源网络后台管理系统</span>
         </div>
         <div class="right">
-            <span>欢迎回来 admin</span>
+            <span> {{ "欢迎回来 " + userInfoStore.userName }}</span>
             <el-dropdown>
                 <span class="el-dropdown-link">
                     <el-icon size="25">
@@ -21,7 +21,7 @@
                 <template #dropdown>
                     <el-dropdown-menu>
                         <el-dropdown-item @click="() => { router.push('/center') }">个人中心</el-dropdown-item>
-                        <el-dropdown-item @click="loginOut">退出</el-dropdown-item>
+                        <el-dropdown-item @click=" userHooks.logout()">退出</el-dropdown-item>
                     </el-dropdown-menu>
                 </template>
             </el-dropdown>
@@ -33,16 +33,16 @@
 import { Fold, Expand, User, ArrowDown } from '@element-plus/icons-vue';
 import { useIsFoldSideMenuStore } from '@/stores/isFoldSideMenu';
 import { useRouter } from 'vue-router';
+import { useUserInfoStore } from '@/stores/userInfo';
+import { useUserHooks } from '@/hooks/UserHooks';
+const userHooks = useUserHooks()
+const userInfoStore = useUserInfoStore();
 const router = useRouter();
 const IsFoldSideMenuStore = useIsFoldSideMenuStore();
 const changeSideMenu = () => {
     IsFoldSideMenuStore.changeIsFoldSideMenu(!IsFoldSideMenuStore.IsFoldSideMenu)
-    console.log(IsFoldSideMenuStore.IsFoldSideMenu)
 }
-const loginOut = () => {
-    localStorage.removeItem('token')
-    router.push('/login')
-}
+
 </script>
 
 <style lang="scss" scoped>

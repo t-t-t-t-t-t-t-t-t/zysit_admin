@@ -13,14 +13,21 @@ export default defineConfig({
       '@': fileURLToPath(new URL('./src', import.meta.url))
     }
   },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler" // or 'modern'
+      }
+    }
+  },
   server: {
     proxy: {
       '/adminApi': {
         //目标路径
-        target: 'http://localhost:3000/',
+        // target: 'http://112.74.15.57:3000/',
+        target: 'http://127.0.0.1:3000/',
         //换源
         changeOrigin: true,
-        // rewrite: (path) => path.replace(/^\/api/, ''),
       }
     },
   }

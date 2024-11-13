@@ -8,44 +8,44 @@ export const useUserInfoStore = defineStore("UserInfo", () => {
     // 用户token
     const token = ref('');
     // 用户id
-    const id = ref(0);
-    // 姓名
-    const name = ref('');
+    const _id = ref(0);
     // 用户名
     const userName = ref('');
+    // 0管理员 1编辑者
+    const role = ref(null);
 
     // 检查是否有之前登录的UserInfo存储
     const localStorageUserInfoStr = localStorage.getItem("UserInfo");
     if (localStorageUserInfoStr) {
         const localStorageUserInfo = JSON.parse(localStorageUserInfoStr);
         token.value = localStorageUserInfo.token;
-        id.value = localStorageUserInfo.id;
-        name.value = localStorageUserInfo.name;
+        _id.value = localStorageUserInfo._id;
         userName.value = localStorageUserInfo.userName;
+        role.value = localStorageUserInfo.role
     }
 
     // 设置用户信息(常用于登录)
     const setUserInfo = (userInfo) => {
         token.value = userInfo.token;
-        id.value = userInfo.id;
-        name.value = userInfo.name;
+        _id.value = userInfo._id;
         userName.value = userInfo.userName;
+        role.value = userInfo.role
         localStorage.setItem("UserInfo", JSON.stringify(userInfo));
     }
 
-    // 清掉用户信息(常用于登出)
+    // 清掉用户信息
     const clearUserInfo = () => {
-        token.value = '';
-        id.value = 0;
-        name.value = '';
-        userName.value = '';
+        token.value = null;
+        _id.value = null;
+        userName.value = null;
+        role.value = null
         localStorage.removeItem("UserInfo");
     }
     return {
         token,
-        id,
-        name,
+        _id,
         userName,
+        role,
         setUserInfo,
         clearUserInfo
     }

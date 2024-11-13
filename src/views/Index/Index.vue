@@ -1,10 +1,18 @@
 <template>
     <div>
-        index
+        <uploadImage :image="imageUrl" @UploadImage="handleUploadImage"></uploadImage>
     </div>
 </template>
 
-<script setup>
+<script setup lang="js">
+import { ref } from 'vue';
+import uploadImage from '@/components/UploadImage/UploadImage.vue';
+const emit = defineEmits(['getImgUrl'])
+const imageUrl = ref('')
+function handleUploadImage(image) {
+    console.log(image)
+    imageUrl.value = image
+}
 
 </script>
 
