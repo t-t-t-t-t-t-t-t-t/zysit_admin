@@ -1,0 +1,1 @@
+import{U as l}from"./UploadImage-COppiFFJ.js";import{r as t,o as m,c as n,a as r}from"./index-DDjioiAb.js";const u={__name:"Index",emits:["getImgUrl"],setup(c,{emit:s}){const a=t("");function o(e){console.log(e),a.value=e}return(e,i)=>(m(),n("div",null,[r(l,{image:a.value,onUploadImage:o},null,8,["image"])]))}};export{u as default};
