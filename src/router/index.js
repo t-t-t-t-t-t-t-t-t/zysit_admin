@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import { createRouter, createWebHashHistory } from 'vue-router'
 import pina from '@/stores'
 import { useIsGetRouterStore } from '@/stores/isGetRouter'
 import Login from '@/views/Login.vue'
@@ -33,7 +33,7 @@ const routes = [
   }
 ]
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHashHistory(),
   routes: routes
 })
 // 判断权限

@@ -4,8 +4,8 @@ import { useUserHooks } from "@/hooks/UserHooks";
 import pinia from "@/stores";
 import { ElMessage } from "element-plus";
 
-export const baseUrl = import.meta.env.MODE === 'development' ? "http://localhost:3000/" : ""; //用代理切换BaseUrl
-export const apiPrefix = import.meta.env.MODE === 'development' ? "/adminApi" : "";//api 前缀
+export const baseUrl = import.meta.env.MODE === 'development' ? "http://localhost:3000/" : "http://112.74.15.57:3000/"; //用代理切换BaseUrl
+export const apiPrefix = "/adminApi";//api 前缀
 
 // 获取用户信息存储库，用于设置axios每次请求带上token请求头
 const userInfoStore = useUserInfoStore(pinia);
